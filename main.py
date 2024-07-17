@@ -5,6 +5,7 @@ import streamlit as st
 from pytesseract import pytesseract, Output
 from PIL import Image
 
+lang = "eng"
 pytesseract.tesseract_cmd = "C:/Program Files/Tesseract-OCR/tesseract.exe"
 myconfiq = r"--psm 11 --oem 3"
 
@@ -124,19 +125,11 @@ def main():
         st.session_state.img = img
         update(img)
 
-    col1, col2, col3 = st.columns(3)
-    with col1:
-        id = st.text_input(label="ID Number", value=st.session_state.id, key="id_input")
-
-    with col2:
-        name = st.text_input(
-            label="Name", value=st.session_state.name, key="name_input"
-        )
-
-    with col3:
-        nationality = st.text_input(
-            label="Nationality", value=st.session_state.nationality, key="gender_input"
-        )
+    id = st.text_input(label="ID Number", value=st.session_state.id, key="id_input")
+    name = st.text_input(label="Name", value=st.session_state.name, key="name_input")
+    nationality = st.text_input(
+        label="Nationality", value=st.session_state.nationality, key="gender_input"
+    )
 
     submit = st.button("Submit", use_container_width=True)
 
